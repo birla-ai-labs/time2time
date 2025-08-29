@@ -1,0 +1,6 @@
+torch==2.7.0
+toto-ts==0.1.3
+pandas==2.2.3
+numpy==1.26.4
+einops==0.7.0
+transformers==4.52.1

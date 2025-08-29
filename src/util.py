@@ -3,31 +3,19 @@ import numpy as np
 import functools
 from einops import rearrange, repeat
 from typing import NamedTuple, Optional
-
-from datasets import load_dataset 
-import sys 
 import contextlib
 import functools
-from transformers import AutoModelForCausalLM
-from toto.model.toto import Toto
-from toto.model.backbone import TotoBackbone, TotoOutput
-from toto.data.util.dataset import MaskedTimeseries
-from toto.inference.forecaster import TotoForecaster, Forecast
+from toto.model.backbone import TotoBackbone
 from toto.model.attention import (
-    AttentionAxis,
-    MultiHeadAttention,
     SpaceWiseMultiheadAttention,
     TimeWiseMultiheadAttention,
 )
-from toto.data.util.dataset import pad_array, pad_id_mask
 from typing import Callable, List, Tuple
 import torch.nn.functional as F
 from torch import Tensor
 import matplotlib.pyplot as plt 
 import matplotlib.cm as cm
 import pandas as pd
-from jaxtyping import Float, Bool
-from toto.model.util import KVCache
 
 # toto = Toto.from_pretrained('Datadog/Toto-Open-Base-1.0')
 # toto.to('cuda:0')
@@ -543,7 +531,7 @@ def plot_probabilistic_forecast(
     
     plt.xlabel('Time Steps', fontsize=21)
     plt.ylabel('Value', fontsize=21)
-    plt.legend(fontsize=28)
+    plt.legend(fontsize=18)
     plt.grid(True, linestyle='--', alpha=0.6)
     
     if save_path:
