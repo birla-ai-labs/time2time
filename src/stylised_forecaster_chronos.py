@@ -28,32 +28,32 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 TARGET_COL = "NASDAQ100"
 PATHS: Dict[str, Dict[str, pd.Timestamp | str]] = {
     "2000 Crash": {
-        "path": "./2000_crash.csv",
+        "path": "../time_periods/2000_crash.csv",
         "start_date": pd.Timestamp("2000-08-31"),
         "end_date": pd.Timestamp("2001-04-04"),
     },
     "2007 Calm": {
-        "path": "./2007_normal.csv",
+        "path": "../time_periods/2007_normal.csv",
         "start_date": pd.Timestamp("2007-03-12"),
         "end_date": pd.Timestamp("2007-11-02"),
     },
     "2008 Crash": {
-        "path": "./2008_crash.csv",
+        "path": "../time_periods/2008_crash.csv",
         "start_date": pd.Timestamp("2008-07-25"),
         "end_date": pd.Timestamp("2009-03-09"),
     },
     "2017 Calm": {
-        "path": "./2017_data.csv",
+        "path": "../time_periods/2017_data.csv",
         "start_date": pd.Timestamp("2017-01-12"),
         "end_date": pd.Timestamp("2017-08-09"),
     },
     "2020 Crash": {
-        "path": "./2020_crash.csv",
+        "path": "../time_periods/2020_crash.csv",
         "start_date": pd.Timestamp("2021-12-27"),
         "end_date": pd.Timestamp("2022-10-04"),
     },
     "2019 Calm": {
-        "path": "./2019_data.csv",
+        "path": "../time_periods/2019_data.csv",
         "start_date": pd.Timestamp("2019-06-01"),
         "end_date": pd.Timestamp("2020-02-06"),
     },
