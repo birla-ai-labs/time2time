@@ -61,3 +61,5 @@ To generate the heatmap, run the following command:
 ```bash
     time2time_env/bin/python3 generate_heatmap.py
 ```
+_The plot will be saved as `heatmap.png` in the current directory._
+##
