@@ -13,11 +13,7 @@ While transformer-based foundation models excel at forecasting routine patterns,
 
 ## Installation ⚙
 
-1. Clone the repository:
-```bash
-    git clone https://github.com/bharat-tsfm-consortium/time2time.git
-    cd time2time
-```
+1. Unzip the provided code and navigate to the project directory.
 2. Create a virtual environment and activate it:
 ```bash
     # On Linux/MacOS
@@ -40,7 +36,7 @@ While transformer-based foundation models excel at forecasting routine patterns,
 ##
 To generate the plots for the real data, run the following command:
 ```bash
-    time2time_env/bin/python3 generate_real.py
+    python3 generate_real.py
 ```
 _The plot will be saved as `stylised_real.png` in the current directory._
 ##
@@ -49,7 +45,7 @@ _The plot will be saved as `stylised_real.png` in the current directory._
 ##
 To generate the plots for the synthetic data, run the following command:
 ```bash
-    time2time_env/bin/python3 generate_synthetic.py
+    python3 generate_synthetic.py
 ```
 
 _The plot will be saved as `stylised_synthetic.png` in the current directory._
@@ -59,7 +55,7 @@ _The plot will be saved as `stylised_synthetic.png` in the current directory._
 ##
 To generate the heatmap, run the following command:
 ```bash
-    time2time_env/bin/python3 generate_heatmap.py
+    python3 generate_heatmap.py
 ```
 _The plot will be saved as `heatmap.png` in the current directory._
 ##
