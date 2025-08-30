@@ -457,7 +457,7 @@ plot_stylegrid(
     context_len=128,
     pred_len=64,
     num_samples=200,
-    save_path="chronos.png", #Set to None to show the plot instead of saving it
+    save_path="chronos_intervention_plot.png", #Set to None to show the plot instead of saving it
     need_one=False,
     lims=lims,
 )

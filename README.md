@@ -34,16 +34,25 @@ While transformer-based foundation models excel at forecasting routine patterns,
 ## Usage 📈
 ### Real Data
 ##
-To generate the plots for the real data, run the following command:
+To generate intervention plots for the real data (using Toto-Open-Base-1.0), run the following command:
 ```bash
     python3 generate_real.py
 ```
 _The plot will be saved as `stylised_real.png` in the current directory._
 ##
 
+TO generate intervention plots for the real data (using Chronos-T5-Small), run the following command:
+```bash
+    cd src
+    python3 stylised_forecaster_chronos.py
+```
+_The plot will be saved as `chronos_intervention_plot.png` in the 'src' directory._
+
+##
+
 ### Synthetic Data
 ##
-To generate the plots for the synthetic data, run the following command:
+To generate intervention plots for the synthetic data (using Toto-Open-Base-1.0), run the following command:
 ```bash
     python3 generate_synthetic.py
 ```
@@ -53,7 +62,7 @@ _The plot will be saved as `stylised_synthetic.png` in the current directory._
 
 ### Heatmap
 ##
-To generate the heatmap, run the following command:
+To generate cosine similarity heatmaps, run the following command:
 ```bash
     python3 generate_heatmap.py
 ```
