@@ -23,37 +23,39 @@ set_seeds(0)
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+## Note on dataset end dates: 
+# The model processes only 128 time steps for the intervention and the remaining portion is utilized to display the ground truth plot.
 
 # setting data
 TARGET_COL = "NASDAQ100"
 PATHS: Dict[str, Dict[str, pd.Timestamp | str]] = {
     "2000 Crash": {
-        "path": "../time_periods/2000_crash.csv",
+        "path": "../data/2000_crash.csv",
         "start_date": pd.Timestamp("2000-08-31"),
-        "end_date": pd.Timestamp("2001-04-04"),
+        "end_date": pd.Timestamp("2001-04-04"), 
     },
     "2007 Calm": {
-        "path": "../time_periods/2007_normal.csv",
+        "path": "../data/2007_normal.csv",
         "start_date": pd.Timestamp("2007-03-12"),
         "end_date": pd.Timestamp("2007-11-02"),
     },
     "2008 Crash": {
-        "path": "../time_periods/2008_crash.csv",
+        "path": "../data/2008_crash.csv",
         "start_date": pd.Timestamp("2008-07-25"),
         "end_date": pd.Timestamp("2009-03-09"),
     },
     "2017 Calm": {
-        "path": "../time_periods/2017_data.csv",
+        "path": "../data/2017_data.csv",
         "start_date": pd.Timestamp("2017-01-12"),
         "end_date": pd.Timestamp("2017-08-09"),
     },
     "2020 Crash": {
-        "path": "../time_periods/2020_crash.csv",
+        "path": "../data/2020_crash.csv",
         "start_date": pd.Timestamp("2021-12-27"),
         "end_date": pd.Timestamp("2022-10-04"),
     },
     "2019 Calm": {
-        "path": "../time_periods/2019_data.csv",
+        "path": "../data/2019_data.csv",
         "start_date": pd.Timestamp("2019-06-01"),
         "end_date": pd.Timestamp("2020-02-06"),
     },
@@ -130,19 +132,7 @@ def get_layerwise_activations(
     layers = [activations[i].squeeze(0) for i in sorted(activations.keys())]
     return torch.stack(layers)  # (L, S+1, D)
 
-
-def layerwise_similarity(
-    chronos, series_a: pd.Series, series_b: pd.Series, max_len: int = 128
-) -> torch.Tensor:
-    act_a = get_layerwise_activations(chronos, series_a, max_len)
-    act_b = get_layerwise_activations(chronos, series_b, max_len)
-    mean_a = act_a[:, :-1, :].mean(dim=1)  # (L, D)
-    mean_b = act_b[:, :-1, :].mean(dim=1)  # (L, D)
-    return F.cosine_similarity(mean_a, mean_b, dim=1).cpu()
-
-
 # encoding activation hooks
-
 def _encode_ids_mask(chronos, context_tensor_cpu: torch.Tensor):
     token_ids, attention_mask, scale = chronos.tokenizer.context_input_transform(
         context_tensor_cpu
@@ -447,6 +437,7 @@ pairs = [
     ("2020 Crash", "2019 Calm"),
 ]
 
+# Added to ensure the same y-limits for toto and chronos
 lims = {
     ("2017 Calm", "2008 Crash"): (4500, 7000),
     ("2007 Calm", "2000 Crash"): (1500, 2500),
@@ -458,24 +449,6 @@ lims = {
 
 segments = load_all_segments()
 
-for content_name, style_name in pairs:
-    content = segments[content_name]
-    style = segments[style_name]
-
-    similarity = layerwise_similarity(chronos, content, style, max_len=128)
-    print(
-        "Similarity scores:",
-        " & ".join(f"{similarity[i].item():.3f}" for i in range(len(similarity))),
-    )
-    plt.plot(range(len(similarity)), similarity.numpy(), marker="o")
-    plt.xlabel("Layer")
-    plt.ylabel("Cosine similarity")
-    plt.title(
-        "Chronos layer-wise similarity ({} vs {})".format(content_name, style_name)
-    )
-    plt.grid(True)
-    plt.show()
-
 plot_stylegrid(
     chronos=chronos,
     segments=segments,
@@ -484,7 +457,7 @@ plot_stylegrid(
     context_len=128,
     pred_len=64,
     num_samples=200,
-    save_path="chronos.png",
+    save_path="chronos.png", #Set to None to show the plot instead of saving it
     need_one=False,
     lims=lims,
 )
