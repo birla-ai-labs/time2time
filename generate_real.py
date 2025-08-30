@@ -14,7 +14,7 @@ WINDOW_SIZE=128
 STRIDE=1
 
 toto_model = Toto.from_pretrained('Datadog/Toto-Open-Base-1.0', cache_dir='cache_dir')
-device = 'cuda:1' if torch.cuda.is_available() else 'cpu'
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 toto_model.to(device)
 toto_model.eval() # Set to evaluation mode
 toto_backbone = toto_model.model
@@ -105,4 +105,4 @@ original_forecast_08_17 = original_forecaster.forecast(
 )
 
 
-plot_probabilistic_forecast(forecast_08_17, normal_windows[0], normal_windows[22][105:], original_forecast=original_forecast_08_17, save_path='toto_output.png')
+plot_probabilistic_forecast(forecast_08_17, normal_windows[0], normal_windows[22][105:], original_forecast=original_forecast_08_17, save_path='stylised_real.png')

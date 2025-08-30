@@ -12,7 +12,7 @@ WINDOW_SYNTH_SIZE = 256
 STRIDE = 1
 
 toto_model = Toto.from_pretrained('Datadog/Toto-Open-Base-1.0', cache_dir='cache_dir')
-device = 'cuda:1' if torch.cuda.is_available() else 'cpu'
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 toto_model.to(device)
 toto_model.eval() # Set to evaluation mode
 toto_backbone = toto_model.model
@@ -197,8 +197,6 @@ all_labels = [
     'Intervened Forecast (Severity = 2.0)'
 ]
 
-# plot_probabilistic_forecast(synthetic_forecast, synthetic_normal_windows[0], synthetic_normal_windows[65][191:], original_forecast=original_synthetic_forecast, save_path='toto_output.png')
-
 fig, ax = plt.subplots(1, 1, figsize=(20, 10)) # A single, large plot
 
 plot_multi_stylized_forecast_subplot(
@@ -216,7 +214,7 @@ ax.set_ylabel('Value', fontsize=26)
 
 plt.tight_layout()
 
-save_path = "severity_spectrum_plot.png"
+save_path = "stylised_synthetic.png"
 plt.savefig(save_path, dpi=300, bbox_inches='tight')
 plt.close()
 print(f"Severity spectrum figure saved to {save_path}")
