@@ -68,3 +68,18 @@ To generate cosine similarity heatmaps, run the following command:
 ```
 _The plot will be saved as `heatmap.png` in the current directory._
 ##
+
+## Citation
+
+If you use this code or the methodology in your research, please cite our paper:
+
+```bibtex
+@inproceedings{
+sanyal2025timetime,
+title={time2time: Causal Intervention in Hidden States to Simulate Rare Events in Time Series Foundation Models},
+author={Debdeep Sanyal and Aaryan Nagpal and Dhruv Kumar and Murari Mandal and Saurabh Deshpande},
+booktitle={Recent Advances in Time Series Foundation Models Have We Reached the 'BERT Moment'?},
+year={2025},
+url={https://openreview.net/forum?id=VElPLJUr2G}
+}
+```
