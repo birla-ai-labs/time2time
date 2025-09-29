@@ -36,15 +36,14 @@ While transformer-based foundation models excel at forecasting routine patterns,
 ##
 To generate intervention plots for the real data (using Toto-Open-Base-1.0), run the following command:
 ```bash
-    python3 generate_real.py
+    python3 generate_toto_predictions.py
 ```
 _The plot will be saved as `stylised_real.png` in the current directory._
 ##
 
 TO generate intervention plots for the real data (using Chronos-T5-Small), run the following command:
 ```bash
-    cd src
-    python3 stylised_forecaster_chronos.py
+    python3 generate_chronos_predictions.py
 ```
 _The plot will be saved as `chronos_intervention_plot.png` in the current directory._
 
@@ -54,7 +53,7 @@ _The plot will be saved as `chronos_intervention_plot.png` in the current direct
 ##
 To generate intervention plots for the synthetic data (using Toto-Open-Base-1.0), run the following command:
 ```bash
-    python3 generate_synthetic.py
+    python3 generate_toto_synthetic.py
 ```
 
 _The plot will be saved as `stylised_synthetic.png` in the current directory._
@@ -64,7 +63,7 @@ _The plot will be saved as `stylised_synthetic.png` in the current directory._
 ##
 To generate cosine similarity heatmaps, run the following command:
 ```bash
-    python3 generate_heatmap.py
+    python3 generate_toto_heatmap.py
 ```
 _The plot will be saved as `heatmap.png` in the current directory._
 ##
@@ -75,11 +74,11 @@ If you use this code or the methodology in your research, please cite our paper:
 
 ```bibtex
 @inproceedings{
-sanyal2025timetime,
-title={time2time: Causal Intervention in Hidden States to Simulate Rare Events in Time Series Foundation Models},
-author={Debdeep Sanyal and Aaryan Nagpal and Dhruv Kumar and Murari Mandal and Saurabh Deshpande},
-booktitle={Recent Advances in Time Series Foundation Models Have We Reached the 'BERT Moment'?},
-year={2025},
-url={https://openreview.net/forum?id=VElPLJUr2G}
+  sanyal2025timetime,
+  title={time2time: Causal Intervention in Hidden States to Simulate Rare Events in Time Series Foundation Models},
+  author={Debdeep Sanyal and Aaryan Nagpal and Dhruv Kumar and Murari Mandal and Saurabh Deshpande},
+  booktitle={Recent Advances in Time Series Foundation Models Have We Reached the 'BERT Moment'?},
+  year={2025},
+  url={https://openreview.net/forum?id=VElPLJUr2G}
 }
 ```
