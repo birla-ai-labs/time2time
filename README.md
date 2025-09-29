@@ -46,7 +46,7 @@ TO generate intervention plots for the real data (using Chronos-T5-Small), run t
     cd src
     python3 stylised_forecaster_chronos.py
 ```
-_The plot will be saved as `chronos_intervention_plot.png` in the 'src' directory._
+_The plot will be saved as `chronos_intervention_plot.png` in the current directory._
 
 ##
 
